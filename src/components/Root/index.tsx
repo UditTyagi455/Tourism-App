@@ -22,7 +22,7 @@ const Root = () => {
         console.log('token', token);
         navigation.reset({
           index: 0,
-          routes: [{name: 'Home'}],
+          routes: [{name: 'BottomNavigation'}],
         });
       } else {
         navigation.reset({

@@ -6,6 +6,13 @@ export const style = StyleSheet.create({
         height: 300,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
+        // display: "flex",
+        // justifyContent: "space-between"
+    },
+    headerPart: {
+      display: "flex",
+      flexDirection: "row",
+      justifyContent: "space-between"
     },
     GoBack: {
         marginTop: 55,
@@ -18,6 +25,12 @@ export const style = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+      },
+      menuAndroid: {
+        margin: 8,
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: "flex-end",
       },
       profilePart: {
         display: "flex",

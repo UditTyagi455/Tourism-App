@@ -44,6 +44,10 @@ const Login = () => {
     // mutate(values);
   };
 
+  const setToken =async () => {
+await AsyncStorage.setItem("Auth_token","helloUdit111")
+  }
+
   console.log("Counter-value :::",count);
 
   return (
@@ -84,9 +88,10 @@ const Login = () => {
             <Formik
               initialValues={initialValues}
               validationSchema={validationSchema}
-              onSubmit={(values: any,{resetForm}) => {
+              onSubmit= {(values: any,{resetForm}) => {
                 console.log("my-values ==>",values)
                 if(values.email == "Udittyagi455@gmail.com" && values.password == "12345678"){
+                  setToken();
                   navigation.navigate("BottomNavigation")
                 }
                 resetForm({values: initialValues})

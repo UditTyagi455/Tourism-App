@@ -6,6 +6,7 @@ import {
   Platform,
   TouchableOpacity,
   Image,
+  Modal
 } from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,6 +17,7 @@ const ProfilePic = () => {
   const navigation = useNavigation();
   return (
     <View style={style.upperProfilePart}>
+      <View style={style.headerPart}>
       <TouchableOpacity
         onPress={() => navigation.goBack()}
         style={Platform.OS === 'ios' ? style.GoBack : style.GoBackAndroid}>
@@ -29,7 +31,38 @@ const ProfilePic = () => {
             borderRadius: 50,
           }}
         />
-      </TouchableOpacity>
+        </TouchableOpacity>
+        <View>
+        <TouchableOpacity
+          style={Platform.OS === 'ios' ? style.GoBack : style.menuAndroid}>
+          <Icon
+            name="ellipsis-vertical"
+            size={30}
+            color="black"
+            style={{
+              // marginLeft: 5,
+              // backgroundColor: 'white',
+              // borderRadius: 50,
+            }}
+          />
+        </TouchableOpacity>
+        {/* <Modal
+        animationType="slide"
+        transparent={true}
+        visible={true}
+        onRequestClose={() => {
+          alert('Modal has been closed.');
+          
+        }}>
+          <View style={{backgroundColor: "white",width: 150,height: 40,position: "absolute",right: 0,top: 40,borderRadius: 10}}>
+            <Text>hello modal</Text>
+          </View>
+        </Modal> */}
+        </View>
+        
+      </View>
+      
+      
 
       <View style={style.profilePart}>
         <View>
