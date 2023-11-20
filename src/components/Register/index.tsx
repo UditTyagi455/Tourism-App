@@ -118,6 +118,7 @@ const Register = () => {
                     onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
                     value={values.password}
+                    secureTextEntry={true}
                     placeholder="Password"
                     placeholderTextColor="#000"
                   />

@@ -18,10 +18,12 @@ import {categoriesData} from './HomeJsonData';
 import {categories} from './HomeJsonData';
 import {popularData} from './HomeJsonData';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 const ScrollData = ({item}) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity style={style.allCategories}>
+    <TouchableOpacity style={style.allCategories} onPress={() => navigation.navigate("AboutCountry",{id: item.id})}>
       <Image source={{uri: item.image}} style={style.categoriesImage} />
       <View style={style.placeNames}>
         <View>
