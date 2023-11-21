@@ -90,7 +90,7 @@ const endday = originalEndDate.getDate();
                 }}
                 width={40}
                 height={40}
-                style={{borderRadius: 50}}
+                style={{borderRadius: 50,marginLeft: 10}}
               />
               <View style={style.WelcomeView}>
                 <Text style={style.NameText}>{userData.name}</Text>

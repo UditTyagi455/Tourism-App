@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions,Platform} from 'react-native';
 
 export const style = StyleSheet.create({
   headerPart: {
@@ -10,7 +10,7 @@ export const style = StyleSheet.create({
     // opacity: 0.9
   },
   GoBack: {
-    marginTop: 55,
+    marginTop: Platform.OS == "ios" ? 5 : 55,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -48,7 +48,7 @@ export const style = StyleSheet.create({
   BelowPart: {
     // marginTop: Dimensions.get('window').height * 0.48
     position: 'absolute',
-    bottom: 10,
+    bottom: Platform.OS === "ios" ? 80 : 10,
     width: '100%',
   },
   input: {
