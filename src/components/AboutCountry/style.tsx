@@ -41,4 +41,28 @@ export const style = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
       },
+      allCategories: {
+        marginRight: 15,
+        marginVertical: 10
+      },
+      categoriesImage: {
+        width: 230,
+        height: 150,
+      },
+      placeNames: {
+        position: 'absolute',
+        bottom: 5,
+        paddingLeft: 5,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+      },
+      placeNamesCountry: {
+        color: 'white',
+        fontSize: 15,
+        fontWeight: '600',
+        paddingBottom: 5,
+        paddingLeft: 3,
+      }
 });

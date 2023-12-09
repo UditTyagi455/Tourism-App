@@ -67,16 +67,15 @@ const ProfilePic = () => {
             }}>
             <View
               style={{
-                backgroundColor: 'white',
                 width: '100%',
-                height: Dimensions.get('screen').height * 0.7,
+                height: Dimensions.get('screen').height * 0.5,
                 position: 'absolute',
                 right: 0,
                 bottom: 0,
                 borderRadius: 10,
-                borderTopLeftRadius: 30,
-                borderTopRightRadius: 30,
-                backgroundColor: 'black',
+                borderTopLeftRadius: 20,
+                borderTopRightRadius: 20,
+                backgroundColor: '#343a40',
               }}>
               <View
                 style={{
@@ -104,7 +103,6 @@ const ProfilePic = () => {
                 <TouchableOpacity
                   style={{
                     padding: 8,
-                    fontWeight: 'bold',
                     display: 'flex',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
@@ -112,7 +110,8 @@ const ProfilePic = () => {
                     margin: 8,
                     alignItems: 'center',
                     position: 'absolute',
-                    top: 450
+                    top: 300,
+                    backgroundColor: "#343a50"
                   }} 
                   onPress={() => logout()}>
                   <Text style={{fontSize: 20, color: 'white'}}>Logout</Text>
