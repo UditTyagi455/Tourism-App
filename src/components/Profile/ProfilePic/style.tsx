@@ -16,6 +16,7 @@ export const style = StyleSheet.create({
     },
     GoBack: {
         marginTop: 55,
+        marginRight: 15,
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',

@@ -1,14 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Notification = () => {
   return (
-    <View>
-      <Text>Notification</Text>
-    </View>
-  )
-}
+    <SafeAreaView>
+      <View>
+        <Text>Notification</Text>
+      </View>
+    </SafeAreaView>
+  );
+};
 
-export default Notification
+export default Notification;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

@@ -21,6 +21,7 @@ import {
 } from '../../services/validate/FlightForm';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CalendarPicker from 'react-native-calendar-picker';
+import moment from 'moment';
 
 const Flight = () => {
   const [startDate, setStartDate] = useState(null);
@@ -53,6 +54,7 @@ const endday = originalEndDate.getDate();
       setEndDate(null);
     }
   };
+
 
   const calendarPress = () => {
     setShowCalendar(!showCalendar);
@@ -173,7 +175,7 @@ const endday = originalEndDate.getDate();
                       style={[style.input, style.shadowProp]}
                       onChangeText={handleChange('period')}
                       onBlur={handleBlur('period')}
-                      value={startDate ? `${originalStartDate.getFullYear()}/${(originalStartDate.getMonth() + 1) < 10 ? '0' : ''}${originalStartDate.getMonth() + 1}/${startday < 10 ? '0' : ''}${startday} to ${endyear}/${endmonth < 10 ? '0' : ''}${endmonth}/${endday < 10 ? '0' : ''}${endday}` : ""}
+                      value={startDate ? `${moment(startDate).format("DD/MM/YYYY")} to ${moment(endDate).format("DD/MM/YYYY")}`: ""}
                       placeholder="Period"
                       placeholderTextColor="#000"
                     />
