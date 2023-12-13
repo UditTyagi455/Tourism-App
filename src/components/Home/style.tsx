@@ -71,10 +71,17 @@ export const style = StyleSheet.create({
   },
   allCategories: {
     marginRight: 15,
+    shadowOffset: {
+      width: 5,
+      height: 6
+    },
+    shadowOpacity: 0.6,
+    shadowColor: "#8d99ae"
   },
   categoriesImage: {
     width: 250,
     height: 190,
+    borderRadius: 10
   },
   placeNames: {
     position: 'absolute',

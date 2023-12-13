@@ -82,14 +82,20 @@ const AboutCountry = () => {
         {/* below part  */}
         <View style={{paddingHorizontal: 8}}>
           <View style={{marginVertical: 8}}>
-            <Text style={{color: 'black', fontSize: 15, paddingVertical: 15}}>
+            <Text style={style.aboutCountryText}>
               {OurData[0].aboutCountry}
             </Text>
           </View>
+          <View
+            style={style.likeContainer}>
+            <Image
+              source={require('../../assets/Images/thumbs.png')}
+              style={style.thumbImage}
+            />
+            <Text>3,560</Text>
+          </View>
           <View>
-            <Text style={{fontWeight: 'bold', fontSize: 18, color: 'black'}}>
-              Sightseeing Places
-            </Text>
+            <Text style={style.boldText}>Sightseeing Places</Text>
             <FlatList
               keyExtractor={() => Math.random() * 30}
               horizontal={true}
@@ -97,9 +103,7 @@ const AboutCountry = () => {
               data={OurData[0].sightseeingPlaces}
               renderItem={({item}) => <ScrollData item={item} />}
             />
-            <Text style={{fontWeight: 'bold', fontSize: 18, color: 'black'}}>
-              Best Hotels
-            </Text>
+            <Text style={style.boldText}>Best Hotels</Text>
             <FlatList
               keyExtractor={() => Math.random() * 30}
               horizontal={true}
@@ -112,45 +116,27 @@ const AboutCountry = () => {
               showsHorizontalScrollIndicator={false}>
               {OurData[0].bestHotels.map((item, index) => {
                 return (
-                  <View
-                    style={{
-                      display: 'flex',
-                      flexDirection: 'row',
-                      justifyContent: 'space-between',
-                      width: 260,
-                      height: 30,
-                      borderWidth: 1,
-                      borderColor: "#8CC0DE",
-                      marginRight: 8,
-                      borderRadius: 12,
-                      marginBottom: 20,
-                      marginTop: 10,
-                      // alignItems: "center"
-                    }}
-                    key={index}>
-                    <View style={{display: 'flex', flexDirection: 'row'}}>
-                      <View
-                        style={{
-                          borderTopLeftRadius: 5,
-                          borderBottomLeftRadius: 5,
-                          backgroundColor: '#8CC0DE',
-                          width: 18,
-                          height: '100%',
-                        }}></View>
-                      <Text style={{marginTop: 5,color: "black",fontSize: 13,fontWeight: "bold",paddingLeft: 5}}>Hotel du Louvre</Text>
+                  <View style={style.belowContainer} key={index}>
+                    <View style={style.flexCommon}>
+                      <View style={style.innerContainer}></View>
+                      <Text style={style.bestHoterRatingText}>
+                        Hotel du Louvre
+                      </Text>
                     </View>
-                    <View style={{display: "flex",flexDirection: "row"}}>
-                      <Image source={require("../../assets/Images/heart.png")} style={{width: 10,height: 10,marginTop: 10,marginRight: 5}}/>
-                      <Text style={{marginTop: 5,marginRight: 3,fontWeight: "bold",color: "black"}}>2,520</Text>
+                    <View style={style.flexCommon}>
+                      <Image
+                        source={require('../../assets/Images/heart.png')}
+                        style={style.heartImage}
+                      />
+                      <Text style={style.ratingText}>2,520</Text>
                     </View>
                   </View>
                 );
               })}
             </ScrollView>
-            <TouchableWithoutFeedback >
-              <View style={{backgroundColor: "#8CC0DE",padding: 25,display: "flex",justifyContent: "center",marginBottom: 20,alignItems: "center",borderRadius: 15}}>
-
-              <Text style={{color: "white",fontSize: 30,alignItems: "center"}}>Book</Text>
+            <TouchableWithoutFeedback>
+              <View style={style.bookButton}>
+                <Text style={style.buttonText}>Book</Text>
               </View>
             </TouchableWithoutFeedback>
           </View>

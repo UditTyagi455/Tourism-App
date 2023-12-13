@@ -57,7 +57,7 @@ const Home = () => {
     await AsyncStorage.removeItem('Auth_token');
   };
   return (
-    <SafeAreaView style={{marginTop: 20, marginLeft: 10}}>
+    <SafeAreaView style={{marginTop: 20, marginLeft: 10,backgroundColor: "#e5e5e5",height: "100%"}}>
       <ScrollView>
       <StatusBar
         animated={true}
