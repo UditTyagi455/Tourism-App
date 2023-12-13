@@ -1,18 +1,21 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
+
+
 
 export const styles = StyleSheet.create({
   container: {
     marginHorizontal: 8,
-    height: "100%"
   },
   flex: {
     display: 'flex',
+    padding: 10
   },
   favoriteTour: {
     backgroundColor: '#e5e5e5',
     marginHorizontal: 10,
+    marginTop: 70,
     // paddingVertical: 20,
-    height: 85,
+    // height: 85,
     borderRadius: 10,
     display: 'flex',
     flexDirection: 'row',
@@ -31,7 +34,7 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: 10,
   },
   favoriteText: {
-    paddingLeft: 8,
+    paddingVertical: 25,
     fontWeight: '300',
     fontSize: 15,
     color: 'black',
@@ -43,7 +46,7 @@ export const styles = StyleSheet.create({
     marginVertical: 20,
   },
   WelcomeView: {
-    paddingLeft: 10,
+    paddingLeft: 25,
     justifyContent: 'center',
   },
   WelcomeText: {
@@ -52,13 +55,13 @@ export const styles = StyleSheet.create({
     color: 'black',
   },
   GoBack: {
-    marginRight: 15,
+    // marginRight: 5,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
   },
   GoBackAndroid: {
-    margin: 8,
+    // margin: 8,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

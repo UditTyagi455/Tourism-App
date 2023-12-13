@@ -1,17 +1,103 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Platform,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {styles} from './style';
+import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Notification = () => {
+  const navigation = useNavigation();
+  const notificationText = [
+    {
+      id: 1,
+      text: 'A new airline has been added to our program.',
+    },
+    {
+      id: 2,
+      text: 'Travel to Paris with the most discounts',
+    },
+    {
+      id: 3,
+      text: 'Get to know the new hotel in Phuket',
+    },
+    {
+      id: 4,
+      text: 'Get to know the new hotel in Phuket',
+    },
+    {
+      id: 5,
+      text: 'Travel to Paris with the most discounts',
+    },
+    {
+      id: 6,
+      text: 'Get to know the new hotel in Phuket',
+    },
+    {
+      id: 7,
+      text: 'Get to know the new hotel in Phuket',
+    },
+  ];
+
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Notification</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+      <View style={styles.ImageHeader}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={Platform.OS === 'ios' ? styles.GoBack : styles.GoBackAndroid}>
+          <Icon
+            name="chevron-back"
+            size={30}
+            color="black"
+            style={{
+              marginLeft: 5,
+            }}
+          />
+        </TouchableOpacity>
+        <Image
+          source={{
+            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CM62a88xZ_D3rXjqLWWbYXjx3Dow-MwDuVTBPBg&s',
+          }}
+          width={40}
+          height={40}
+          style={{borderRadius: 50}}
+        />
+        <View style={styles.WelcomeView}>
+          <Text style={styles.WelcomeText}>Message Inbox</Text>
+        </View>
       </View>
+
+      <View style={styles.cardContainer}>
+        {notificationText.map((item, index) => {
+          return (
+            <TouchableOpacity
+              style={styles.favoriteTour}
+              key={index}
+              onPress={() => navigation.navigate("Messagescreen")}>
+              <View style={styles.sidebar}></View>
+              <View style={styles.flex}>
+                <Text style={styles.favoriteText}>{item.text}</Text>
+                {index == 0 && (
+                  <Text style={styles.clickText}>Click if you want</Text>
+                )}
+              </View>
+              <View style={styles.dot}></View>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      </ScrollView>
+      
     </SafeAreaView>
   );
 };
 
 export default Notification;
-
-const styles = StyleSheet.create({});

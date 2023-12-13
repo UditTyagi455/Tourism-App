@@ -9,26 +9,26 @@ import {
 import React, {useState} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeNavigation from '../HomeNavigation';
-import Home from '../../components/Home';
 import Notification from '../../components/Notification';
+import NotificationNavigation from '../NotificationNavigation';
 import Flight from '../../components/Flight';
 import ProfileNavigation from '../ProfileNavigation';
 import Profile from '../../components/Profile/ProfilePic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { useNavigation } from '@react-navigation/core';
+import {useNavigation} from '@react-navigation/core';
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
   const [hide, setHide] = useState(false);
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const initialLayout = {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   };
-  const iconClicked = (route:any) => {
+  const iconClicked = (route: any) => {
     navigation.navigate(route);
-  }
+  };
   return (
     <View
       style={{
@@ -38,11 +38,10 @@ const BottomNavigation = () => {
         width: '100%',
         backgroundColor: 'red',
         borderRadius: 50,
-      }}
-      >
+      }}>
       <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarLabelPosition: "below-icon",
+          tabBarLabelPosition: 'below-icon',
           headerShown: false,
           tabBarLabel: ({focused}) => (
             <Text
@@ -53,7 +52,7 @@ const BottomNavigation = () => {
                 display: 'flex',
                 flexDirection: 'row',
               }}>
-              {route.name }
+              {route.name}
             </Text>
           ),
           tabBarShowLabel: false,
@@ -62,7 +61,7 @@ const BottomNavigation = () => {
             height: 12,
           },
           tabBarStyle: {
-            display: "flex",
+            display: 'flex',
           },
           tabBarIcon: ({focused}) => (
             <TouchableWithoutFeedback onPress={() => iconClicked(route.name)}>
@@ -70,7 +69,7 @@ const BottomNavigation = () => {
                 style={[
                   {
                     justifyContent: 'center',
-                    display: "flex",
+                    display: 'flex',
                     alignItems: 'center',
                     alignContent: 'center',
                     flex: 1,
@@ -82,16 +81,16 @@ const BottomNavigation = () => {
                   focused ? {borderColor: '#f87f81'} : {borderColor: '#fff'},
                 ]}>
                 {route.name == 'Home' && focused ? (
-                  <Ionicons name="home" type="Ionicons" style={styles.Icon} color= "black"/>
+                  <Ionicons name="home" style={styles.Icon} color="black" />
                 ) : null}
 
                 {route.name == 'Home' && !focused ? (
-                  <TouchableWithoutFeedback onPress={() => iconClicked(route.name)}>
+                  <TouchableWithoutFeedback
+                    onPress={() => iconClicked(route.name)}>
                     <Ionicons
                       name="home-outline"
-                      type="Ionicons"
                       style={styles.Icon}
-                      color= "black"
+                      color="black"
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
@@ -100,17 +99,18 @@ const BottomNavigation = () => {
                     name="notifications"
                     type="Ionicons"
                     style={styles.Icon}
-                    color= "black"
+                    color="black"
                   />
                 ) : null}
 
                 {route.name == 'Notification' && !focused ? (
-                  <TouchableWithoutFeedback onPress={() => iconClicked(route.name)}>
+                  <TouchableWithoutFeedback
+                    onPress={() => iconClicked(route.name)}>
                     <Ionicons
                       name="notifications-outline"
                       type="Ionicons"
                       style={styles.Icon}
-                      color= "black"
+                      color="black"
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
@@ -120,43 +120,53 @@ const BottomNavigation = () => {
                     name="airplane"
                     type="Ionicons"
                     style={styles.Icon}
-                    color= "black"
+                    color="black"
                   />
                 ) : null}
 
                 {route.name == 'Flight' && !focused ? (
-                  <TouchableWithoutFeedback onPress={() => iconClicked(route.name)}>
+                  <TouchableWithoutFeedback
+                    onPress={() => iconClicked(route.name)}>
                     <Ionicons
                       name="airplane-outline"
                       type="Ionicons"
                       style={styles.Icon}
-                      color= "black"
+                      color="black"
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
 
                 {route.name == 'Profile' && focused ? (
-                  <Ionicons name="person" type="Ionicons" style={styles.Icon} color= "black"/>
+                  <Ionicons
+                    name="person"
+                    type="Ionicons"
+                    style={styles.Icon}
+                    color="black"
+                  />
                 ) : null}
 
                 {route.name == 'Profile' && !focused ? (
-                  <TouchableWithoutFeedback onPress={() => iconClicked(route.name)}>
+                  <TouchableWithoutFeedback
+                    onPress={() => iconClicked(route.name)}>
                     <Ionicons
                       name="person-outline"
                       type="Ionicons"
                       style={styles.Icon}
-                      color= "black"
+                      color="black"
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
               </View>
             </TouchableWithoutFeedback>
           ),
-        })}
-        >
+        })}>
         <Tab.Screen name="Home" component={HomeNavigation} options={{}} />
-        <Tab.Screen name="Notification" component={Notification} />
-        <Tab.Screen name="Flight" component={Flight} options={{ tabBarStyle: { display: 'none' } }}/>
+        <Tab.Screen name="Notification" component={NotificationNavigation} />
+        <Tab.Screen
+          name="Flight"
+          component={Flight}
+          options={{tabBarStyle: {display: 'none'}}}
+        />
         <Tab.Screen name="Profile" component={ProfileNavigation} />
       </Tab.Navigator>
     </View>
