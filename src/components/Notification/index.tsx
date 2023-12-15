@@ -12,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Header from '../Header';
 
 const Notification = () => {
   const navigation = useNavigation();
@@ -49,7 +50,7 @@ const Notification = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
-      <View style={styles.ImageHeader}>
+      {/* <View style={styles.ImageHeader}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
           style={Platform.OS === 'ios' ? styles.GoBack : styles.GoBackAndroid}>
@@ -73,7 +74,8 @@ const Notification = () => {
         <View style={styles.WelcomeView}>
           <Text style={styles.WelcomeText}>Message Inbox</Text>
         </View>
-      </View>
+      </View> */}
+      <Header name="Message Inbox"/>
 
       <View style={styles.cardContainer}>
         {notificationText.map((item, index) => {

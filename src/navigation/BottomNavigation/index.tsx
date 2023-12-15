@@ -12,6 +12,7 @@ import HomeNavigation from '../HomeNavigation';
 import Notification from '../../components/Notification';
 import NotificationNavigation from '../NotificationNavigation';
 import Flight from '../../components/Flight';
+import FlightNavigation from '../FlightNavigation';
 import ProfileNavigation from '../ProfileNavigation';
 import Profile from '../../components/Profile/ProfilePic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -164,7 +165,7 @@ const BottomNavigation = () => {
         <Tab.Screen name="Notification" component={NotificationNavigation} />
         <Tab.Screen
           name="Flight"
-          component={Flight}
+          component={FlightNavigation}
           options={{tabBarStyle: {display: 'none'}}}
         />
         <Tab.Screen name="Profile" component={ProfileNavigation} />

@@ -107,6 +107,7 @@ const endday = originalEndDate.getDate();
               validationSchema={validationSchema}
               onSubmit={(values: any, {resetForm}) => {
                 console.log('my-fiight-form-value ==>', values);
+                navigation.navigate("Allflight")
                 resetForm({values: initialValues});
               }}>
               {({
