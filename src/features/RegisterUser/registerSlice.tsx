@@ -9,7 +9,7 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-  name: "",
+  name: "Mr. X",
   email: "",
   password: "",
   repeatPassword: ""
@@ -19,7 +19,7 @@ export const registerSlice = createSlice({
   name: 'register',
   initialState,
   reducers: {
-    registerUser: (state, action: PayloadAction<string>) => {
+    registerUser: (state, action: PayloadAction<any>) => {
       state.name = action.payload.name,
       state.email = action.payload.email,
       state.password = action.payload.password,

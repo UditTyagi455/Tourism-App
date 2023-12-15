@@ -9,6 +9,7 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  RefreshControl
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {style} from './style';
@@ -44,22 +45,39 @@ const ScrollData = ({item}) => {
 
 const Home = () => {
   const [searchItem, onSearchItem] = useState('');
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState({id: 1,category: 'All',active: true});
+  const [refreshing,setRefresh] = useState(false);
+  const [onRefresh, setOnRefresh] = useState(true);
   const userData = useSelector(state => state.counter);
 
   const categoryClick = (item: any) => {
     const obj = categories.filter(items => items.id === item.id);
-    setActive(obj[0].id);
+    setActive(obj[0]);
     console.log('what-is-obj :::>', obj, active);
   };
+
+  const _onRefresh = () => {
+    setRefresh(true);
+    setOnRefresh(false);
+    setTimeout(() => {
+      setRefresh(false);
+      setOnRefresh(true);
+    }, 1000);
+  }
 
   const Logout = async () => {
     await AsyncStorage.removeItem('Auth_token');
   };
   return (
-    <SafeAreaView style={{marginTop: 20, marginLeft: 10,backgroundColor: "#e5e5e5",height: "100%"}}>
-      <ScrollView>
-      <StatusBar
+    <SafeAreaView style={style.Container}>
+       <ScrollView 
+       refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={_onRefresh}
+        />
+      }>
+       <StatusBar
         animated={true}
         backgroundColor="#61dafb"
         // barStyle={statusBarStyle}
@@ -98,7 +116,7 @@ const Home = () => {
           color="black"
         />
       </View>
-        <View style={style.CategoriesView}>
+      {onRefresh && <View style={style.CategoriesView}>
           <Text style={style.CategoriesText}>Categories</Text>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {categories.map((item, index) => {
@@ -107,12 +125,12 @@ const Home = () => {
                   key={index}
                   style={[
                     style.CategoriesData,
-                    item.id === active && style.onActive,
+                    item.id === active.id && style.onActive,
                   ]}
                   onPress={() => categoryClick(item)}>
                   <Text
                     style={
-                      item.id === active
+                      item.id === active.id
                         ? style.onActiveCategoryTextColor
                         : style.CategoryTextColor
                     }>
@@ -123,17 +141,17 @@ const Home = () => {
             })}
           </ScrollView>
           <FlatList
-            keyExtractor={() => Math.random() * 30}
+            keyExtractor={(item:number) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={categoriesData}
+            data={active.category == "All" ? categoriesData : categoriesData.filter(item => item.category == active.category)}
             renderItem={({item}) => <ScrollData item={item} />}
           />
 
           <View style={style.popularView}>
             <Text style={style.PopularText}>Popular</Text>
             <FlatList
-              keyExtractor={() => Math.random() * 30}
+              keyExtractor={(item:number) => item.id}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
               data={popularData}
@@ -165,7 +183,7 @@ const Home = () => {
             })}
           </ScrollView> */}
           </View>
-        </View>
+        </View>}
         </ScrollView>
     </SafeAreaView>
   );

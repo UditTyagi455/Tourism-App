@@ -17,10 +17,13 @@ import ProfileNavigation from '../ProfileNavigation';
 import Profile from '../../components/Profile/ProfilePic';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/core';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
+  const tabBar = useSelector(state => state.navbar.showTabBar);
+
   const [hide, setHide] = useState(false);
   const navigation = useNavigation();
   const initialLayout = {
@@ -166,7 +169,7 @@ const BottomNavigation = () => {
         <Tab.Screen
           name="Flight"
           component={FlightNavigation}
-          options={{tabBarStyle: {display: 'none'}}}
+          options={{tabBarStyle: {display: tabBar ? 'flex' : 'none'}}}
         />
         <Tab.Screen name="Profile" component={ProfileNavigation} />
       </Tab.Navigator>

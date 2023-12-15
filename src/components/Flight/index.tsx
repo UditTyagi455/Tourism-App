@@ -8,7 +8,7 @@ import {
   ImageBackground,
   TextInput,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import {style} from './style';
@@ -22,6 +22,7 @@ import {
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import CalendarPicker from 'react-native-calendar-picker';
 import moment from 'moment';
+import { setTabBar } from '../../features/TabBar/tabBar';
 
 const Flight = () => {
   const [startDate, setStartDate] = useState(null);
@@ -59,6 +60,10 @@ const endday = originalEndDate.getDate();
   const calendarPress = () => {
     setShowCalendar(!showCalendar);
   }
+
+  useEffect(()=>{
+    dispatch(setTabBar(false)) 
+},[])
 
   return (
     <KeyboardAwareScrollView>

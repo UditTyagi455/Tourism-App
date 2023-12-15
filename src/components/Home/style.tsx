@@ -1,6 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 export const style = StyleSheet.create({
+  Container: {
+    paddingTop: 20,
+    paddingLeft: 10,
+    backgroundColor: '#e5e5e5',
+    height: '100%',
+  },
   ImageHeader: {
     display: 'flex',
     flexDirection: 'row',
@@ -10,14 +16,14 @@ export const style = StyleSheet.create({
     paddingLeft: 10,
   },
   WelcomeText: {
-    fontWeight: '200',
-    fontSize: 14,
-    color: "black"
+    fontWeight: '400',
+    fontSize: 16,
+    color: 'black',
   },
   NameText: {
-    fontWeight: '400',
+    fontWeight: '300',
     fontSize: 15,
-    color: "black"
+    color: 'black',
   },
   inputContainer: {
     justifyContent: 'center',
@@ -30,7 +36,7 @@ export const style = StyleSheet.create({
     height: 45,
     paddingLeft: 40,
     opacity: 0.5,
-    color: 'black'
+    color: 'black',
   },
   icon: {
     position: 'absolute',
@@ -43,7 +49,7 @@ export const style = StyleSheet.create({
   CategoriesText: {
     fontWeight: '600',
     fontSize: 16,
-    color: "black"
+    color: 'black',
   },
   CategoriesData: {
     marginHorizontal: 8,
@@ -73,15 +79,15 @@ export const style = StyleSheet.create({
     marginRight: 15,
     shadowOffset: {
       width: 5,
-      height: 6
+      height: 6,
     },
     shadowOpacity: 0.6,
-    shadowColor: "#8d99ae"
+    shadowColor: '#8d99ae',
   },
   categoriesImage: {
     width: 250,
     height: 190,
-    borderRadius: 10
+    borderRadius: 10,
   },
   placeNames: {
     position: 'absolute',
@@ -109,10 +115,10 @@ export const style = StyleSheet.create({
   },
   rating: {
     display: 'flex',
-    alignItems: "flex-end",
+    alignItems: 'flex-end',
     flexDirection: 'row',
     fontSize: 10,
-    paddingRight: 5
+    paddingRight: 5,
   },
   ratingText: {
     fontSize: 12,
@@ -125,6 +131,6 @@ export const style = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     marginBottom: 18,
-    color: "black"
+    color: 'black',
   },
 });

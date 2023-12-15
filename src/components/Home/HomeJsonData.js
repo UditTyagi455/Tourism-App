@@ -189,6 +189,174 @@ export const categoriesData = [
                         name: "Palace of Versailles"
                   }
             ]
+      },
+      {
+            id: 5,
+            category: 'Mountain',
+            country: 'Himalaya',
+            city: 'India',
+            image: "https://images.pexels.com/photos/570026/pexels-photo-570026.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            aboutCountry: "The Himalayas, or Himalaya, is a mountain range in Asia, separating the plains of the Indian subcontinent from the Tibetan Plateau. The range has some of the Earth's highest peaks, including the highest, Mount Everest; more than 100 peaks exceeding elevations of 7,200 m above sea level lie in the Himalayas.",
+            sightseeingPlaces : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ],
+            bestHotels : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ]
+      }, 
+      {
+            id: 6,
+            category: 'Mountain',
+            country: 'Himalaya',
+            city: 'India',
+            image: "https://images.pexels.com/photos/1531660/pexels-photo-1531660.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            aboutCountry: "The Himalayas, or Himalaya, is a mountain range in Asia, separating the plains of the Indian subcontinent from the Tibetan Plateau. The range has some of the Earth's highest peaks, including the highest, Mount Everest; more than 100 peaks exceeding elevations of 7,200 m above sea level lie in the Himalayas.",
+            sightseeingPlaces : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ],
+            bestHotels : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ]
+      },
+      {
+            id: 7,
+            category: 'jungle',
+            country: 'Amazon',
+            city: 'Brazil',
+            image: "https://images.pexels.com/photos/2739664/pexels-photo-2739664.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            aboutCountry: "The Amazon rainforest is the world's largest tropical rainforest, covering 670,000 square kilometers. It spans nine countries, including Brazil, Colombia, Peru, and other South American countries. The Amazon rainforest is home to a rich ecosystem, including thousands of rivers and millions of different species of plants and animals.",
+            sightseeingPlaces : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ],
+            bestHotels : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ]
+      },
+      {
+            id: 8,
+            category: 'Historical',
+            country: 'Great Wall Of China',
+            city: 'China',
+            image: "https://images.pexels.com/photos/19872/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+            aboutCountry: "The Great Wall of China is a series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe",
+            sightseeingPlaces : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ],
+            bestHotels : [
+                  {
+                        id: 1,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 2,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  },
+                  {
+                        id: 3,
+                        image: "https://w0.peakpx.com/wallpaper/371/543/HD-wallpaper-paris-france-city-france-golden-black-paris-le-tour-eiffel-lights-night.jpg",
+                        name: "Palace of Versailles"
+                  }
+            ]
       }
 ]
 
