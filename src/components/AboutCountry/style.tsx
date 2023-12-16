@@ -38,7 +38,7 @@ export const style = StyleSheet.create({
   categoriesImage: {
     width: 230,
     height: 150,
-    borderRadius: 10,
+    borderRadius: 5,
   },
   placeNames: {
     position: 'absolute',
@@ -67,33 +67,34 @@ export const style = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 18,
     color: 'black',
+    marginVertical: 20
   },
   belowContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: 260,
+    width: 230,
     height: 30,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#8CC0DE',
-    marginRight: 8,
-    borderRadius: 12,
+    marginRight: 18,
+    borderRadius: 15,
     marginBottom: 20,
     marginTop: 10,
     // alignItems: "center"
   },
   innerContainer: {
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
     backgroundColor: '#8CC0DE',
-    width: 18,
+    width: 15,
     height: '100%',
   },
   bestHoterRatingText: {
     marginTop: 5,
     color: 'black',
     fontSize: 13,
-    fontWeight: 'bold',
+    fontWeight: '400',
     paddingLeft: 5,
   },
   heartImage: {
@@ -104,17 +105,23 @@ export const style = StyleSheet.create({
   },
   ratingText: {
     marginTop: 5,
-    marginRight: 3,
-    fontWeight: 'bold',
+    marginRight: 6,
+    fontWeight: '400',
     color: 'black',
+    fontSize: 12,
   },
-  flexCommon: {display: 'flex', flexDirection: 'row'},
+  flexCommon: {
+    display: 'flex',
+     flexDirection: 'row',
+     marginRight: 8
+    },
   bookButton: {
     backgroundColor: '#8CC0DE',
     padding: 15,
     display: 'flex',
     justifyContent: 'center',
     marginBottom: 40,
+    marginTop: 20,
     alignItems: 'center',
     borderRadius: 15,
   },
@@ -131,6 +138,9 @@ export const style = StyleSheet.create({
               marginRight: 15,
               height: 50
   },thumbImage: {
-    width: 15, height: 15,marginRight: 5,marginBottom: 2
+    width: 20,
+     height: 20,
+     marginRight: 5,
+     marginBottom: 2
   }
 });

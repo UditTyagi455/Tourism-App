@@ -4,36 +4,15 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
+import Header from '../../Header';
+import { useTheme } from '@react-navigation/native';
 
 const MessageBox = () => {
   const navigation = useNavigation();
+  const theme = useTheme();
   return (
     <SafeAreaView>
-      <View style={styles.ImageHeader}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={Platform.OS === 'ios' ? styles.GoBack : styles.GoBackAndroid}>
-          <Icon
-            name="chevron-back"
-            size={30}
-            color="black"
-            style={{
-              marginLeft: 5,
-            }}
-          />
-        </TouchableOpacity>
-        <Image
-          source={{
-            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CM62a88xZ_D3rXjqLWWbYXjx3Dow-MwDuVTBPBg&s',
-          }}
-          width={40}
-          height={40}
-          style={{borderRadius: 50}}
-        />
-        <View style={styles.WelcomeView}>
-          <Text style={styles.WelcomeText}>Message Inbox</Text>
-        </View>
-      </View>
+      <Header name="Message Inbox" image={true}/>
 
       {/* below part */}
 
@@ -42,7 +21,7 @@ const MessageBox = () => {
         <View style={styles.flex}>
             <View style={{display: "flex",flexDirection: "row",alignItems: "center",marginBottom: 35}}>
             <Image source={require("../../../assets/Images/thyaq.png")} style={{width: 35,height: 35}}/>
-                <Text>Turkism Airline</Text>
+                <Text style={{color: theme.dark ? "black":"black"}}>Turkism Airline</Text>
             </View>
           <Text style={styles.favoriteText}>
             Turkish Airlines Description {"\n"}Turkish Airlines (Turkish: Türk Hava

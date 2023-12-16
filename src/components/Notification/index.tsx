@@ -49,34 +49,8 @@ const Notification = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header name="Message Inbox" image={true}/>
       <ScrollView>
-      {/* <View style={styles.ImageHeader}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          style={Platform.OS === 'ios' ? styles.GoBack : styles.GoBackAndroid}>
-          <Icon
-            name="chevron-back"
-            size={30}
-            color="black"
-            style={{
-              marginLeft: 5,
-            }}
-          />
-        </TouchableOpacity>
-        <Image
-          source={{
-            uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CM62a88xZ_D3rXjqLWWbYXjx3Dow-MwDuVTBPBg&s',
-          }}
-          width={40}
-          height={40}
-          style={{borderRadius: 50}}
-        />
-        <View style={styles.WelcomeView}>
-          <Text style={styles.WelcomeText}>Message Inbox</Text>
-        </View>
-      </View> */}
-      <Header name="Message Inbox"/>
-
       <View style={styles.cardContainer}>
         {notificationText.map((item, index) => {
           return (

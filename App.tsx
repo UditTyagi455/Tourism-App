@@ -9,7 +9,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer,DarkTheme,DefaultTheme} from '@react-navigation/native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import NavigationScreen from './src/navigation';
@@ -19,14 +19,14 @@ type SectionProps = PropsWithChildren<{
 }>;
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+  const theme = useColorScheme();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  // const backgroundStyle = {
+  //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+  // };
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
       <NavigationScreen />
     </NavigationContainer>
   );

@@ -9,7 +9,8 @@ import {
   TextInput,
   ScrollView,
   FlatList,
-  RefreshControl
+  RefreshControl,
+  TouchableWithoutFeedback
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {style} from './style';
@@ -21,17 +22,20 @@ import {popularData} from './HomeJsonData';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 
+import { useTheme } from '@react-navigation/native';
+
 const ScrollData = ({item}) => {
   const navigation = useNavigation();
+  const theme = useTheme();
   return (
     <TouchableOpacity style={style.allCategories} onPress={() => navigation.navigate("AboutCountry",{id: item.id})}>
       <Image source={{uri: item.image}} style={style.categoriesImage} />
       <View style={style.placeNames}>
         <View>
-          <Text style={style.placeNamesCountry}>{item.country}</Text>
+          <Text style={[style.placeNamesCountry,{color: theme.dark ? "white": "white"}]}>{item.country}</Text>
           <View style={style.cityPart}>
             <Icon name="location-outline" size={18} color="white" />
-            <Text style={style.placeNamesCity}>{item.city}</Text>
+            <Text style={[style.placeNamesCity,{color: theme.dark ? "white": "white"}]}>{item.city}</Text>
           </View>
         </View>
         <View style={style.rating}>
@@ -49,6 +53,8 @@ const Home = () => {
   const [refreshing,setRefresh] = useState(false);
   const [onRefresh, setOnRefresh] = useState(true);
   const userData = useSelector(state => state.counter);
+  const navigation = useNavigation();
+  const theme = useTheme();
 
   const categoryClick = (item: any) => {
     const obj = categories.filter(items => items.id === item.id);
@@ -61,6 +67,7 @@ const Home = () => {
     setOnRefresh(false);
     setTimeout(() => {
       setRefresh(false);
+      setActive({id: 1,category: 'All',active: true})
       setOnRefresh(true);
     }, 1000);
   }
@@ -95,8 +102,8 @@ const Home = () => {
           style={{borderRadius: 50}}
         />
         <View style={style.WelcomeView}>
-          <Text style={style.WelcomeText}>Welcome</Text>
-          <Text style={style.NameText}>{userData.name}</Text>
+          <Text style={[style.WelcomeText,{color: theme.dark ? "white": "black"}]}>Welcome</Text>
+          <Text style={[style.NameText,{color: theme.dark ? "white": "black"}]}>{userData.name}</Text>
         </View>
       </View>
 
@@ -104,20 +111,26 @@ const Home = () => {
       <View style={style.inputContainer}>
         <TextInput
           onChangeText={onSearchItem}
-          style={style.searchBox}
+          style={[style.searchBox,{borderColor: theme.dark === true ? "white" : "black",color: "white"}]}
           value={searchItem}
           placeholder="Search destination..."
-          placeholderTextColor="#000"
+          // placeholderTextColor="#000"
         />
         <Icon
           name="search-outline"
           size={18}
           style={style.icon}
-          color="black"
+          color={theme.dark === true ? "white": "black"}
         />
       </View>
       {onRefresh && <View style={style.CategoriesView}>
-          <Text style={style.CategoriesText}>Categories</Text>
+        <View style={style.textStyling}>
+        <Text style={[style.CategoriesText,{color: theme.dark ? "white": "black"}]}>Categories</Text>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate("ViewAll",{data: "allData"})}>
+          <Text style={[style.viewAll,{color: theme.dark ? "white": "black"}]}>View All</Text>
+        </TouchableWithoutFeedback>
+        </View>
+          
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             {categories.map((item, index) => {
               return (
@@ -131,7 +144,7 @@ const Home = () => {
                   <Text
                     style={
                       item.id === active.id
-                        ? style.onActiveCategoryTextColor
+                        ? {color: theme.dark ? "white": "white"}
                         : style.CategoryTextColor
                     }>
                     {item.category}
@@ -140,21 +153,22 @@ const Home = () => {
               );
             })}
           </ScrollView>
+         
           <FlatList
             keyExtractor={(item:number) => item.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            data={active.category == "All" ? categoriesData : categoriesData.filter(item => item.category == active.category)}
+            data={active.category == "All" ? categoriesData.allData : categoriesData.allData.filter(item => item.category == active.category)}
             renderItem={({item}) => <ScrollData item={item} />}
           />
 
           <View style={style.popularView}>
-            <Text style={style.PopularText}>Popular</Text>
+            <Text style={[style.PopularText,{color: theme.dark ? "white": "black"}]}>Popular</Text>
             <FlatList
               keyExtractor={(item:number) => item.id}
               horizontal={true}
               showsHorizontalScrollIndicator={false}
-              data={popularData}
+              data={categoriesData.popularData}
               renderItem={({item}) => <ScrollData item={item} />}
             />
             {/* <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

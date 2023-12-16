@@ -3,6 +3,7 @@ import React from 'react';
 import Home from '../../components/Home';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import AboutCountry from '../../components/AboutCountry';
+import ViewAll from '../../components/Home/ViewAll';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const HomeNavigation = () => {
     <Stack.Navigator initialRouteName="Homescreen" screenOptions={screenOptions}>
       <Stack.Screen name="Homescreen" component={Home} />
       <Stack.Screen name="AboutCountry" component={AboutCountry}/>
+      <Stack.Screen name="ViewAll" component={ViewAll} />
     </Stack.Navigator>
   )
 }

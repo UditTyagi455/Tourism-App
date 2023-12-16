@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     ImageHeader: {
         display: 'flex',
         flexDirection: 'row',
-        marginVertical: 20,
+        paddingVertical: 10,
       },
       GoBack: {
         marginRight: 15,

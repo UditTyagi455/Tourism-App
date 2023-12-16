@@ -19,10 +19,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/core';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { useTheme } from '@react-navigation/native';
+
 const Tab = createBottomTabNavigator();
 
 const BottomNavigation = () => {
   const tabBar = useSelector(state => state.navbar.showTabBar);
+  const theme = useTheme();
 
   const [hide, setHide] = useState(false);
   const navigation = useNavigation();
@@ -33,6 +36,8 @@ const BottomNavigation = () => {
   const iconClicked = (route: any) => {
     navigation.navigate(route);
   };
+  console.log("theme ==>",theme);
+  
   return (
     <View
       style={{
@@ -40,7 +45,7 @@ const BottomNavigation = () => {
         position: 'absolute',
         height: '100%',
         width: '100%',
-        backgroundColor: 'red',
+        // backgroundColor: 'red',
         borderRadius: 50,
       }}>
       <Tab.Navigator
@@ -66,6 +71,7 @@ const BottomNavigation = () => {
           },
           tabBarStyle: {
             display: 'flex',
+            // backgroundColor: "red"
           },
           tabBarIcon: ({focused}) => (
             <TouchableWithoutFeedback onPress={() => iconClicked(route.name)}>
@@ -82,10 +88,10 @@ const BottomNavigation = () => {
                     borderTopWidth: 3,
                     // backgroundColor:"red",
                   },
-                  focused ? {borderColor: '#f87f81'} : {borderColor: '#fff'},
+                  focused ? {borderColor: theme.dark ? '#fff':'#f87f81'} : {borderColor: theme.dark ? '#000':'#fff'},
                 ]}>
                 {route.name == 'Home' && focused ? (
-                  <Ionicons name="home" style={styles.Icon} color="black" />
+                  <Ionicons name="home" style={styles.Icon} color={theme.dark === true ? "white": "black"} />
                 ) : null}
 
                 {route.name == 'Home' && !focused ? (
@@ -94,7 +100,7 @@ const BottomNavigation = () => {
                     <Ionicons
                       name="home-outline"
                       style={styles.Icon}
-                      color="black"
+                      color={theme.dark === true ? "white": "black"}
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
@@ -103,7 +109,7 @@ const BottomNavigation = () => {
                     name="notifications"
                     type="Ionicons"
                     style={styles.Icon}
-                    color="black"
+                    color={theme.dark === true ? "white": "black"}
                   />
                 ) : null}
 
@@ -114,7 +120,7 @@ const BottomNavigation = () => {
                       name="notifications-outline"
                       type="Ionicons"
                       style={styles.Icon}
-                      color="black"
+                      color={theme.dark === true ? "white": "black"}
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
@@ -124,7 +130,7 @@ const BottomNavigation = () => {
                     name="airplane"
                     type="Ionicons"
                     style={styles.Icon}
-                    color="black"
+                    color={theme.dark === true ? "white": "black"}
                   />
                 ) : null}
 
@@ -135,7 +141,7 @@ const BottomNavigation = () => {
                       name="airplane-outline"
                       type="Ionicons"
                       style={styles.Icon}
-                      color="black"
+                      color={theme.dark === true ? "white": "black"}
                     />
                   </TouchableWithoutFeedback>
                 ) : null}
@@ -145,7 +151,7 @@ const BottomNavigation = () => {
                     name="person"
                     type="Ionicons"
                     style={styles.Icon}
-                    color="black"
+                    color={theme.dark === true ? "white": "black"}
                   />
                 ) : null}
 
@@ -156,7 +162,7 @@ const BottomNavigation = () => {
                       name="person-outline"
                       type="Ionicons"
                       style={styles.Icon}
-                      color="black"
+                      color={theme.dark === true ? "white": "black"}
                     />
                   </TouchableWithoutFeedback>
                 ) : null}

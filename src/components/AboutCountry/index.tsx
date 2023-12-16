@@ -15,6 +15,9 @@ import {useNavigation} from '@react-navigation/native';
 import {categoriesData} from '../Home/HomeJsonData';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useRoute} from '@react-navigation/native';
+import { DataDetail } from '../Home/HomeJsonData';
+import Header from '../Header';
+import { useTheme } from '@react-navigation/native';
 
 const ScrollData = ({item}) => {
   const navigation = useNavigation();
@@ -33,34 +36,21 @@ const ScrollData = ({item}) => {
 const AboutCountry = () => {
   const navigation = useNavigation();
   const route = useRoute();
+  const theme = useTheme();
 
   useEffect(() => {
     console.log('route-data ==>', route.params.id);
   }, []);
 
-  const OurData = categoriesData.filter(item => item.id === route.params.id);
+  const OurData = DataDetail.data.filter(item => item.id === route.params.id);
   console.log('ourData =>', OurData);
   return (
     <View>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={Platform.OS === 'ios' ? style.GoBack : style.GoBackAndroid}>
-        <Icon
-          name="chevron-back"
-          size={30}
-          color="black"
-          style={{
-            marginLeft: 5,
-            backgroundColor: 'white',
-            borderRadius: 50,
-          }}
-        />
-      </TouchableOpacity>
+      <Header name="Udit Tyagi" image={true}/>
       <ScrollView
+      showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           paddingBottom: 50,
-          showsVerticalScrollIndicator: false,
-          showsHorizontalScrollIndicator: false,
         }}>
         <View>
           {
@@ -82,20 +72,20 @@ const AboutCountry = () => {
         {/* below part  */}
         <View style={{paddingHorizontal: 8}}>
           <View style={{marginVertical: 8}}>
-            <Text style={style.aboutCountryText}>
+            <Text style={[style.aboutCountryText,{color: theme.dark ? "white": "black",fontWeight: theme.dark ? "400" : "300"}]}>
               {OurData[0].aboutCountry}
             </Text>
           </View>
           <View
             style={style.likeContainer}>
             <Image
-              source={require('../../assets/Images/thumbs.png')}
+              source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3yof_51X-DJ1BWvGgL_INknYimeWx14dfb9U7zf_KRg&s"}}
               style={style.thumbImage}
             />
-            <Text>3,560</Text>
+            <Text style={{color: theme.dark ? "white" : "black"}}>3,560</Text>
           </View>
           <View>
-            <Text style={style.boldText}>Sightseeing Places</Text>
+            <Text style={[style.boldText,{color: theme.dark ? "white": "black"}]}>Sightseeing Places</Text>
             <FlatList
               keyExtractor={() => Math.random() * 30}
               horizontal={true}
@@ -103,7 +93,7 @@ const AboutCountry = () => {
               data={OurData[0].sightseeingPlaces}
               renderItem={({item}) => <ScrollData item={item} />}
             />
-            <Text style={style.boldText}>Best Hotels</Text>
+            <Text style={[style.boldText,{color: theme.dark ? "white": "black"}]}>Best Hotels</Text>
             <FlatList
               keyExtractor={() => Math.random() * 30}
               horizontal={true}
@@ -119,7 +109,7 @@ const AboutCountry = () => {
                   <View style={style.belowContainer} key={index}>
                     <View style={style.flexCommon}>
                       <View style={style.innerContainer}></View>
-                      <Text style={style.bestHoterRatingText}>
+                      <Text style={[style.bestHoterRatingText,{color: theme.dark ? "white": "black"}]}>
                         Hotel du Louvre
                       </Text>
                     </View>
@@ -128,7 +118,7 @@ const AboutCountry = () => {
                         source={require('../../assets/Images/heart.png')}
                         style={style.heartImage}
                       />
-                      <Text style={style.ratingText}>2,520</Text>
+                      <Text style={[style.ratingText,{color: theme.dark ? "white": "black"}]}>2,520</Text>
                     </View>
                   </View>
                 );

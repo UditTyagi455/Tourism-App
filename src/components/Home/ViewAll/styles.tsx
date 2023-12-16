@@ -4,7 +4,7 @@ export const style = StyleSheet.create({
   Container: {
     paddingTop: 20,
     paddingLeft: 10,
-    // backgroundColor: '#e5e5e5',
+    backgroundColor: '#e5e5e5',
     height: '100%',
   },
   ImageHeader: {
@@ -18,25 +18,25 @@ export const style = StyleSheet.create({
   WelcomeText: {
     fontWeight: '400',
     fontSize: 16,
-    // color: 'black',
+    color: 'black',
   },
   NameText: {
     fontWeight: '300',
     fontSize: 15,
-    // color: 'black',
+    color: 'black',
   },
   inputContainer: {
     justifyContent: 'center',
   },
   searchBox: {
-    borderWidth: 2,
+    borderWidth: 1,
     marginVertical: 10,
     // marginHorizontal: 10,
     borderRadius: 25,
     height: 45,
     paddingLeft: 40,
     opacity: 0.5,
-    // color: 'black',
+    color: 'black',
   },
   icon: {
     position: 'absolute',
@@ -49,15 +49,15 @@ export const style = StyleSheet.create({
   CategoriesText: {
     fontWeight: '600',
     fontSize: 16,
-    // color: 'black',
+    color: 'black',
   },
   CategoriesData: {
     marginHorizontal: 8,
     marginVertical: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#E8F2F8',
     paddingVertical: 8,
     paddingHorizontal: 20,
-    // color: 'black',
+    color: 'black',
     borderRadius: 50,
   },
   textStyling: {
@@ -73,7 +73,7 @@ export const style = StyleSheet.create({
   },
   onActive: {
     backgroundColor: 'blue',
-    color: 'black',
+    color: 'white',
   },
   LogoutButton: {
     paddingVertical: 8,
@@ -82,21 +82,26 @@ export const style = StyleSheet.create({
   },
   allCategories: {
     marginRight: 15,
+    backgroundColor: "#e3d5ca",
+    padding: 5,
+    borderRadius: 10,
     shadowOffset: {
-      width: 5,
-      height: 6,
+      width: -2,
+      height: 16,
     },
     shadowOpacity: 0.6,
-    shadowColor: '#8d99ae',
+    shadowColor: '#000',
+    marginVertical: 10,
+    marginLeft: 10
   },
   viewAll: {
-    // color: "black",
-    marginRight: 15,
+
+    marginRight: 10,
     // marginVertical: 6
   },
   categoriesImage: {
-    width: 250,
-    height: 190,
+    width: 200,
+    height: 130,
     borderRadius: 10,
   },
   placeNames: {
@@ -105,18 +110,18 @@ export const style = StyleSheet.create({
     paddingLeft: 5,
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    // justifyContent: 'space-around',
     width: '100%',
   },
   placeNamesCountry: {
-    // color: 'white',
+    color: 'white',
     fontSize: 20,
     fontWeight: '600',
     paddingBottom: 5,
     paddingLeft: 3,
   },
   placeNamesCity: {
-    // color: 'white',
+    color: 'white',
     fontSize: 16,
   },
   cityPart: {
@@ -132,7 +137,7 @@ export const style = StyleSheet.create({
   },
   ratingText: {
     fontSize: 12,
-    // color: 'white',
+    color: 'white',
   },
   popularView: {
     marginTop: 40,
@@ -141,6 +146,6 @@ export const style = StyleSheet.create({
     fontWeight: '600',
     fontSize: 16,
     marginBottom: 18,
-    // color: 'black',
+    color: 'black',
   },
 });
