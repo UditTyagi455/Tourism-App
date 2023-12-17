@@ -10,7 +10,8 @@ import {
   ScrollView,
   FlatList,
   RefreshControl,
-  TouchableWithoutFeedback
+  TouchableWithoutFeedback,
+  Switch
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {style} from './style';
@@ -21,8 +22,8 @@ import {categories} from './HomeJsonData';
 import {popularData} from './HomeJsonData';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-
 import { useTheme } from '@react-navigation/native';
+import { setThemeColor } from '../../features/Theme/theme';
 
 const ScrollData = ({item}) => {
   const navigation = useNavigation();
@@ -52,6 +53,15 @@ const Home = () => {
   const [active, setActive] = useState({id: 1,category: 'All',active: true});
   const [refreshing,setRefresh] = useState(false);
   const [onRefresh, setOnRefresh] = useState(true);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const dispatch = useDispatch();
+  const toggleSwitch = () => {
+    setIsEnabled(!isEnabled)
+    if(isEnabled)
+    dispatch(setThemeColor("light"));
+  else dispatch(setThemeColor("dark"));
+  }
+  const themeColor = useSelector(state => state.theme.theme);
   const userData = useSelector(state => state.counter);
   const navigation = useNavigation();
   const theme = useTheme();
@@ -86,13 +96,14 @@ const Home = () => {
       }>
        <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        backgroundColor={theme.dark === true ? "#000" : "#000"}
         // barStyle={statusBarStyle}
         // showHideTransition={statusBarTransition}
         hidden={false}
       />
       {/* Name header */}
-      <View style={style.ImageHeader}>
+      <View style ={{display: "flex",flexDirection: "row",justifyContent: "space-between"}}>
+        <View style={style.ImageHeader}>
         <Image
           source={{
             uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2CM62a88xZ_D3rXjqLWWbYXjx3Dow-MwDuVTBPBg&s',
@@ -105,6 +116,16 @@ const Home = () => {
           <Text style={[style.WelcomeText,{color: theme.dark ? "white": "black"}]}>Welcome</Text>
           <Text style={[style.NameText,{color: theme.dark ? "white": "black"}]}>{userData.name}</Text>
         </View>
+        </View>
+        <View style={{marginRight: 15,display: "flex",alignSelf: "center"}}>
+        <Switch
+        trackColor={{false: '#767577', true: '#81b0ff'}}
+        thumbColor={isEnabled ? '#f5dd4b' : '#f4f3f4'}
+        ios_backgroundColor="#3e3e3e"
+        onValueChange={() => toggleSwitch()}
+        value={isEnabled}
+      />
+        </View>
       </View>
 
       {/* Search box */}
@@ -114,7 +135,7 @@ const Home = () => {
           style={[style.searchBox,{borderColor: theme.dark === true ? "white" : "black",color: "white"}]}
           value={searchItem}
           placeholder="Search destination..."
-          // placeholderTextColor="#000"
+          placeholderTextColor={theme.dark === true ? "#fff" : "#000"}
         />
         <Icon
           name="search-outline"

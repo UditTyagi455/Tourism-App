@@ -14,15 +14,23 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import {style} from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import auth from '@react-native-firebase/auth';
 
 const ProfilePic = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
 
   const logout = () => {
+    auth()
+  .signOut()
+  .then(() => {
+    console.log('User signed out!')
     setShowModal(false);
     AsyncStorage.removeItem("Auth_token");
     navigation.navigate("InitialPage")
+  }
+    );
+    
   }
   return (
     <View style={style.upperProfilePart}>

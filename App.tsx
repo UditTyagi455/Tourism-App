@@ -13,12 +13,14 @@ import {NavigationContainer,DarkTheme,DefaultTheme} from '@react-navigation/nati
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import NavigationScreen from './src/navigation';
+import { useSelector } from 'react-redux';
 
 type SectionProps = PropsWithChildren<{
   title: string;
 }>;
 
 function App(): JSX.Element {
+  const themeColor = useSelector(state => state.theme.theme);
   const theme = useColorScheme();
 
   // const backgroundStyle = {
@@ -26,7 +28,7 @@ function App(): JSX.Element {
   // };
 
   return (
-    <NavigationContainer theme={theme === 'dark' ? DarkTheme : DefaultTheme}>
+    <NavigationContainer theme={themeColor === 'dark' ? DarkTheme : DefaultTheme}>
       <NavigationScreen />
     </NavigationContainer>
   );

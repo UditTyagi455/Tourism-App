@@ -12,8 +12,10 @@ import {
   ScrollView,
   StatusBar,
   Button,
+  TouchableWithoutFeedback,
+  ActivityIndicator
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {style} from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
@@ -23,32 +25,59 @@ import {initialValues, validationSchema} from '../../services/validate/Login';
 import {useMutation} from 'react-query';
 import {UserLogin} from '../../services/helpers/UserLogin';
 import { useSelector,useDispatch } from 'react-redux';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { AppWriteContext } from '../../appwrite/AppWriteContext';
+import auth from '@react-native-firebase/auth';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading,setLoading] = useState(false);
   const state = useSelector(state => console.log("what-is-state ==>",state.counter));
+  // const {appWrite,isLoggedIn,setIsLoggedIn} = useContext(AppWriteContext)
 
-  const count = useSelector((state:any) => state.counter.value);
   const dispatch = useDispatch();
 
   const navigation = useNavigation();
   const Login = async () => {
     // await AsyncStorage.setItem('Auth_token', 'hello234@');
   };
-  const submitForm = (values: any,{resetForm}) => {
-    console.log('values ===>', values);
-  
-
+  const submitForm = (values: any) => {
+    setLoading(true);
+    auth()
+    .signInWithEmailAndPassword(values.email,values.password)
+    .then(res => {
+      console.log("user signed in ==>",res)
+      setToken();
+      setLoading(false);
+      navigation.navigate("BottomNavigation");
+    })
+    .catch(error => {
+      if (error.code === 'auth/email-already-in-use') {
+        console.log('That email address is already in use!');
+      }
+      if (error.code === 'auth/invalid-email') {
+        console.log('That email address is invalid!');
+      }
+      setLoading(false);
+      console.error(error);
+    });
     // mutate(values);
   };
 
   const setToken =async () => {
-await AsyncStorage.setItem("Auth_token","helloUdit111")
+   await AsyncStorage.setItem("Auth_token","jwt@$djhaf#42dfas3flsd")
   }
 
-  console.log("Counter-value :::",count);
+  // useEffect(() => {
+  //   appWrite
+  //   .getCurrentUser()
+  //   .then((res) => {
+  //     console.log("response ==>",res)
+      
+  //   }).catch(err => console.log("error occure ==>",err)
+  //   )
+  // },[appWrite,setIsLoggedIn])
 
   return (
     <KeyboardAwareScrollView extraHeight={50}>
@@ -90,10 +119,7 @@ await AsyncStorage.setItem("Auth_token","helloUdit111")
               validationSchema={validationSchema}
               onSubmit= {(values: any,{resetForm}) => {
                 console.log("my-values ==>",values)
-                if(values.email == "Udittyagi455@gmail.com" && values.password == "12345678"){
-                  setToken();
-                  navigation.navigate("BottomNavigation")
-                }
+                submitForm(values)
                 resetForm({values: initialValues})
               }}>
               {({
@@ -114,7 +140,9 @@ await AsyncStorage.setItem("Auth_token","helloUdit111")
                     placeholder="Email"
                     placeholderTextColor="#000"
                   />
+                  <View style={{height: 15}}>
                   {!!errors.email && !!touched.email && <Text style={style.errorText}>* {errors?.email}</Text>}
+                  </View>
 
                   <TextInput
                     name="password"
@@ -126,12 +154,15 @@ await AsyncStorage.setItem("Auth_token","helloUdit111")
                     placeholder="Password"
                     placeholderTextColor="#000"
                   />
+                  <View style={{height: 15}}>
                   {!!errors.password && !!touched.password &&<Text style={style.errorText}>* {errors?.password}</Text>}
-                  <TouchableOpacity
-                    style={[style.LoginButton, style.shadowProp]}
+                  </View>
+                  <TouchableWithoutFeedback
                     onPress={handleSubmit}>
-                    <Text style={style.TextStyleLogin}>Login</Text>
-                  </TouchableOpacity>
+                      <View style={[style.LoginButton, style.shadowProp]}>
+                    {loading ? <ActivityIndicator size="large" /> :<Text style={style.TextStyleLogin}>Login</Text>}
+                      </View>
+                  </TouchableWithoutFeedback>
                   {/* <Button onPress={handleSubmit} title="Submit" /> */}
                 </View>
               )}

@@ -6,7 +6,7 @@ export const style = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor: '#8CC0FE',
     marginHorizontal: 8,
-    marginVertical: 12,
+    marginVertical: 8,
     borderRadius: 12,
     alignItems: 'center',
   },

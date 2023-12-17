@@ -5,17 +5,20 @@ import {
   View,
   ImageBackground,
   Image,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import React from 'react';
 import {style} from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
+import Config from "react-native-config";
 
 const InitialPage = () => {
   const navigation = useNavigation();
   const Login = async () => {
     // await AsyncStorage.setItem('Auth_token', 'hello234@');
   };
+  
   return (
     <View>
       <ImageBackground
@@ -38,16 +41,18 @@ const InitialPage = () => {
             <Text style={style.DiscoverText}>place to vacation</Text>
           </View>
 
-          <TouchableOpacity
-            style={style.LoginButton}
+          <TouchableWithoutFeedback
             onPress={() => navigation.navigate('Login')}>
+              <View style={style.LoginButton}>
             <Text style={style.TextStyleLogin}>Login</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[style.SignupButton, style.shadowProp]}
+              </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback
             onPress={() => navigation.navigate('Register')}>
-            <Text style={style.TextStyleSignUp}>Sign up</Text>
-          </TouchableOpacity>
+              <View style={[style.SignupButton, style.shadowProp]}>
+              <Text style={style.TextStyleSignUp}>Sign up</Text>
+              </View>
+          </TouchableWithoutFeedback>
         </View>
       </ImageBackground>
     </View>

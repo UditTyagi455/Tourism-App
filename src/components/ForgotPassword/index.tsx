@@ -11,19 +11,33 @@ import {
   Dimensions,
   ScrollView,
   StatusBar,
+  TouchableWithoutFeedback,
 } from 'react-native';
 import React, {useState} from 'react';
 import {style} from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import auth from '@react-native-firebase/auth';
+import {Formik} from 'formik';
+import {
+  initialValues,
+  validationSchema,
+} from '../../services/validate/ForgotPassword';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const navigation = useNavigation();
-  const Login = async () => {};
+  const Login = async () => {
+    auth()
+      .sendPasswordResetEmail(email)
+      .then(res => {
+        console.log('sed the email ::', res);
+      })
+      .catch(_err => console.log('forgot-password error ==>', _err));
+  };
   return (
     <KeyboardAvoidingView
       behavior={'height'}
@@ -46,8 +60,8 @@ const ForgotPassword = () => {
               color="black"
               style={{
                 marginLeft: 5,
-                backgroundColor: "white",
-                borderRadius: 50
+                backgroundColor: 'white',
+                borderRadius: 50,
               }}
             />
             <Text style={style.GoBackText}> Login</Text>
@@ -63,20 +77,46 @@ const ForgotPassword = () => {
 
           {/* Below Part */}
           <View style={style.BelowPart}>
-            <Text style={style.TextLine}>Please enter your email address:</Text>
-            <TextInput
-              style={style.input}
-              onChangeText={setEmail}
-              value={email}
-              placeholder="Email"
-              placeholderTextColor="#000"
-            />
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={(values: any, {resetForm}) => {
+                console.log('my-values ==>', values);
+                resetForm({values: initialValues});
+              }}>
+              {({
+                values,
+                handleChange,
+                handleSubmit,
+                errors,
+                touched,
+                handleBlur,
+              }) => (
+                <View>
+                  <Text style={style.TextLine}>
+                    Please enter your email address:
+                  </Text>
+                  <TextInput
+                    name="email"
+                    style={style.input}
+                    onChangeText={handleChange('email')}
+                    onBlur={handleBlur('email')}
+                    value={values.email}
+                    placeholder="Email"
+                    placeholderTextColor="#000"
+                  />
+                  <View style={{height: 15}}>
+                  {!!errors.email && !!touched.email && <Text style={{marginLeft: 15,color: "red",fontSize: 16}}>* {errors?.email}</Text>}
+                  </View>
 
-            <TouchableOpacity
-              style={[style.LoginButton, style.shadowProp]}
-              onPress={() => Login()}>
-              <Text style={style.TextStyleLogin}>Submit</Text>
-            </TouchableOpacity>
+                  <TouchableWithoutFeedback>
+                    <View style={[style.LoginButton, style.shadowProp]}>
+                      <Text style={style.TextStyleLogin}>Submit</Text>
+                    </View>
+                  </TouchableWithoutFeedback>
+                </View>
+              )}
+            </Formik>
           </View>
         </ImageBackground>
       </ScrollView>

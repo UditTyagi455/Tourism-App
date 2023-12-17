@@ -22,6 +22,7 @@ import {Formik} from 'formik';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useSelector, useDispatch } from 'react-redux';
 import { registerUser } from '../../features/RegisterUser/registerSlice';
+import auth from '@react-native-firebase/auth'; 
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -35,6 +36,26 @@ const Register = () => {
   const Login = async () => {
     // await AsyncStorage.setItem('Auth_token', 'hello234@');
   };
+
+  const signUp = (values) => {
+   auth()
+   .createUserWithEmailAndPassword(values.email,values.password)
+   .then(() => {
+    console.log('User account created & signed in!');
+   })
+   .catch(error =>{
+    if (error.code === 'auth/email-already-in-use') {
+      console.log('That email address is already in use!');
+    }
+
+    if (error.code === 'auth/invalid-email') {
+      console.log('That email address is invalid!');
+    }
+
+    console.error(error);
+   } )
+  }
+
   return (
     <KeyboardAwareScrollView>
       <ScrollView>
@@ -75,6 +96,7 @@ const Register = () => {
               validationSchema={validationSchema}
               onSubmit={(values: any, {resetForm}) => {
                 console.log('my-values ==>', values);
+                signUp(values);
                 dispatch(registerUser(values));
                 resetForm({values: initialValues});
                 alert("Register successfully!!")
