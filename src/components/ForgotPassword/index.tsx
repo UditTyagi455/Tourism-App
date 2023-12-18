@@ -12,6 +12,7 @@ import {
   ScrollView,
   StatusBar,
   TouchableWithoutFeedback,
+  ActivityIndicator
 } from 'react-native';
 import React, {useState} from 'react';
 import {style} from './style';
@@ -28,15 +29,22 @@ import {
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading,setLoading] = useState(false);
 
   const navigation = useNavigation();
-  const Login = async () => {
+  const ForgotPassword = async (values) => {
     auth()
-      .sendPasswordResetEmail(email)
+      .sendPasswordResetEmail(values.email)
       .then(res => {
+        alert("mail has been sent to your email address !!");
         console.log('sed the email ::', res);
+        setLoading(false);
+        navigation.navigate("Login")
       })
-      .catch(_err => console.log('forgot-password error ==>', _err));
+      .catch(_err => {
+        console.log('forgot-password error ==>', _err);
+        setLoading(false);
+      });
   };
   return (
     <KeyboardAvoidingView
@@ -81,7 +89,9 @@ const ForgotPassword = () => {
               initialValues={initialValues}
               validationSchema={validationSchema}
               onSubmit={(values: any, {resetForm}) => {
+                setLoading(true)
                 console.log('my-values ==>', values);
+                ForgotPassword(values);
                 resetForm({values: initialValues});
               }}>
               {({
@@ -106,12 +116,12 @@ const ForgotPassword = () => {
                     placeholderTextColor="#000"
                   />
                   <View style={{height: 15}}>
-                  {!!errors.email && !!touched.email && <Text style={{marginLeft: 15,color: "red",fontSize: 16}}>* {errors?.email}</Text>}
+                  {!!errors.email && !!touched.email && <Text style={{marginLeft: 15,color: "red",fontSize: 12}}>* {errors?.email}</Text>}
                   </View>
 
-                  <TouchableWithoutFeedback>
+                  <TouchableWithoutFeedback onPress={handleSubmit}>
                     <View style={[style.LoginButton, style.shadowProp]}>
-                      <Text style={style.TextStyleLogin}>Submit</Text>
+                      {loading ? <ActivityIndicator size="large" /> : <Text style={style.TextStyleLogin}>Submit</Text>}
                     </View>
                   </TouchableWithoutFeedback>
                 </View>
