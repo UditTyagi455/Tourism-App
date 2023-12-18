@@ -38,7 +38,7 @@ export const style = StyleSheet.create({
     color: "white"
   },
   UpperPart: {
-    height: Dimensions.get('window').height * 0.58,
+    height: Dimensions.get('window').height * 0.48,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

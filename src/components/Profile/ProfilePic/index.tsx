@@ -15,12 +15,29 @@ import {useNavigation} from '@react-navigation/native';
 import {style} from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const ProfilePic = () => {
   const navigation = useNavigation();
   const [showModal, setShowModal] = useState(false);
 
-  const logout = () => {
+  const logout =async () => {
+   const signInWith = await AsyncStorage.getItem("signInWith");
+   console.log("signInWith ::",signInWith);
+   
+   if(signInWith === "google"){
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      setShowModal(false);
+      AsyncStorage.removeItem("Auth_token");
+    navigation.navigate("InitialPage")
+      // Handle the sign-out (e.g., clear user info from state)
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+   }else {
+   try {
     auth()
   .signOut()
   .then(() => {
@@ -30,7 +47,10 @@ const ProfilePic = () => {
     navigation.navigate("InitialPage")
   }
     );
-    
+   } catch (error) {
+    console.log("logout-error ::",error);
+   }
+   }  
   }
   return (
     <View style={style.upperProfilePart}>

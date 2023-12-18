@@ -45,7 +45,7 @@ const AboutCountry = () => {
   const OurData = DataDetail.data.filter(item => item.id === route.params.id);
   console.log('ourData =>', OurData);
   return (
-    <View>
+    <View style={{marginTop: Platform.OS === "ios" ? 25 : 0}}>
       <Header name="Udit Tyagi" image={true}/>
       <ScrollView
       showsVerticalScrollIndicator={false}
