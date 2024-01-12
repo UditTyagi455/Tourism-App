@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import Video from 'react-native-video';
-import SplashScreen from 'react-native-lottie-splash-screen';
+// import SplashScreen from 'react-native-lottie-splash-screen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation} from '@react-navigation/native';
 
@@ -31,7 +31,7 @@ const Root = () => {
         });
       }
     });
-    SplashScreen.hide(); // here
+    // SplashScreen.hide(); // here
   }, []);
 
   //   if (isReady) {

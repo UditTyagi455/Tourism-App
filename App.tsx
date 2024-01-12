@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -14,6 +14,7 @@ import {NavigationContainer,DarkTheme,DefaultTheme} from '@react-navigation/nati
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import NavigationScreen from './src/navigation';
 import { useSelector } from 'react-redux';
+import SplashScreen from 'react-native-splash-screen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -22,6 +23,12 @@ type SectionProps = PropsWithChildren<{
 function App(): JSX.Element {
   const themeColor = useSelector(state => state.theme.theme);
   const theme = useColorScheme();
+
+  useEffect(() => {
+    setTimeout(() => {
+      SplashScreen.hide();
+    }, 1000);
+  },[])
 
   // const backgroundStyle = {
   //   backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

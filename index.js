@@ -26,6 +26,6 @@ const AppStore = () => (
   </Provider>
 );
 
-initializeApp(firebaseConfig);
+// initializeApp(firebaseConfig);
 
 AppRegistry.registerComponent(appName, () => AppStore);
